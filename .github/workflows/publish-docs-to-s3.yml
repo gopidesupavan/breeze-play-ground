@@ -33,7 +33,7 @@ jobs:
           persist-credentials: false
           repository: 'apache/airflow'
           ref: 'providers-amazon/9.5.0rc1'
-          path: 'docs-preparation'
+          path: '/tmp/docs-preparation'
 
       - name: "Checkout repo"
         uses: actions/checkout@v4
@@ -50,7 +50,7 @@ jobs:
         run: |
           ls -lthr
           pwd
-        working-directory: "docs-preparation"
+        working-directory: "/tmp/docs-preparation"
       
       
           
