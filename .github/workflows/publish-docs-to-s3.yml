@@ -49,6 +49,8 @@ jobs:
       - name: "verify dirs"
         run: |
           ls -lthr
-          ls -lthr docs-preparation
           pwd
+        working-directory: "docs-preparation"
+      
+      
           
