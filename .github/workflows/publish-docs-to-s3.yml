@@ -32,13 +32,9 @@ jobs:
 
       - name: "Checkout tag"
         id: checkout-tag
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          repository: 'apache/airflow'
-          ref: 'providers-amazon/9.5.0rc1'
-          path: '/tmp/docs-preparation'
-
+        run: |
+          git clone --depth 1 --branch providers-amazon/9.5.0rc1 https://github.com/apache/airflow.git
+        working-directory: "/tmp/docs-preparation"
 
       - name: "Checkout repo"
         uses: actions/checkout@v4
