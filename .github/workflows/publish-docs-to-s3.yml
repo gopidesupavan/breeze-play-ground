@@ -52,6 +52,10 @@ jobs:
           ls -lthr
           cd /tmp/docs-preparation && ls -lthr
           cd /tmp/docs-preparation/airflow && ls -lthr
+      - name: "Prepare docs"
+        run: |
+          breeze build-docs --package-filter apache-airflow-providers-amazon
+        working-directory: "/tmp/docs-preparation/airflow"
       
       
           
