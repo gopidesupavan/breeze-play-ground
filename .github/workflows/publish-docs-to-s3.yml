@@ -50,8 +50,8 @@ jobs:
       - name: "verify dirs"
         run: |
           ls -lthr
-          pwd
-        working-directory: "/tmp/docs-preparation"
+          cd /tmp/docs-preparation && ls -lthr
+          cd /tmp/docs-preparation/airflow && ls -lthr
       
       
           
