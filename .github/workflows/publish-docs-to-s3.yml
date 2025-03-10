@@ -26,6 +26,10 @@ jobs:
   publish-docs-to-s3:
     runs-on: ubuntu-latest
     steps:
+      - name: create temp dir
+        run: |
+          mkdir -p "/tmp/docs-preparation"
+
       - name: "Checkout tag"
         id: checkout-tag
         uses: actions/checkout@v4
@@ -33,7 +37,7 @@ jobs:
           persist-credentials: false
           repository: 'apache/airflow'
           ref: 'providers-amazon/9.5.0rc1'
-          path: '${{ github.workspace }}/docs-preparation'
+          path: '/tmp/docs-preparation'
 
 
       - name: "Checkout repo"
@@ -51,7 +55,7 @@ jobs:
         run: |
           ls -lthr
           pwd
-        working-directory: "${{ github.workspace }}/docs-preparation"
+        working-directory: "/tmp/docs-preparation"
       
       
           
