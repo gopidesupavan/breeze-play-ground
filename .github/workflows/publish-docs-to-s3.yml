@@ -33,7 +33,7 @@ jobs:
           persist-credentials: false
           repository: 'apache/airflow'
           ref: 'providers-amazon/9.5.0rc1'
-          path: '${{ github.workspace }}docs-preparation'
+          path: '${{ github.workspace }}/docs-preparation'
 
 
       - name: "Checkout repo"
