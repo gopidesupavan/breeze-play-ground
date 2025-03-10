@@ -53,6 +53,8 @@ jobs:
           ls -lthr
 #          cd /tmp/docs-preparation && ls -lthr
 #          cd /tmp/docs-preparation/airflow && ls -lthr
-      
+
+      - name: "Common action"
+        uses: ./.github/actions/common
       
           
