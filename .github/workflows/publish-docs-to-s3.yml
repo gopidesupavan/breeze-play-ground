@@ -58,7 +58,6 @@ jobs:
     steps:
       - name: "Checkout ${{ github.ref }}"
         run: |
-          mkdir -p ${TEMP_AIRFLOW_DIR}
           echo ${GLOBAL_VAR}
           
 
