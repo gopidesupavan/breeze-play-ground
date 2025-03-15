@@ -56,10 +56,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout ${{ inputs.ref }}"
+        env:
+          temp-airflow-dir: "${{ github.workspace }}/temp-airflow-repo-reference"
         run: |
-          git clone https://github.com/apache/airflow.git /mnt/temp-airflow-repo-reference
-          cd /mnt/temp-airflow-repo-reference && git checkout ${{ inputs.ref }}
-          cd /mnt/temp-airflow-repo-reference && ls -lthr
+          mkdir -p ${temp-airflow-dir}
+          git clone https://github.com/apache/airflow.git ${temp-airflow-dir}
+          cd ${temp-airflow-dir} && git checkout ${{ inputs.ref }}
+          cd ${temp-airflow-dir} && ls -lthr
           
 
 
