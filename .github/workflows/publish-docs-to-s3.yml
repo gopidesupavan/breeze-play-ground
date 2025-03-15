@@ -56,25 +56,10 @@ jobs:
     name: "Checkout"
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout ${{ inputs.ref }}"
-        env:
-          TEMP_AIRFLOW_DIR: "/home/runner/work/temp-airflow-repo-reference"
+      - name: "Checkout ${{ github.ref }}"
         run: |
           mkdir -p ${TEMP_AIRFLOW_DIR}
-          git clone https://github.com/apache/airflow.git "${TEMP_AIRFLOW_DIR}"
-          cd "${TEMP_AIRFLOW_DIR}" && git checkout "${{ inputs.ref }}"
-          cd "${TEMP_AIRFLOW_DIR}" && ls -lthr
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print global variable
-        run: echo "Global Variable: $GLOBAL_VAR"
-
-  job2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print global variable
-        run: echo "Global Variable: $GLOBAL_VAR"
+          echo ${GLOBAL_VAR}
           
 
 
