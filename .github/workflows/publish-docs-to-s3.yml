@@ -60,9 +60,9 @@ jobs:
           temp-airflow-dir: "${{ github.workspace }}/temp-airflow-repo-reference"
         run: |
           mkdir -p ${temp-airflow-dir}
-          git clone https://github.com/apache/airflow.git ${temp-airflow-dir}
-          cd ${temp-airflow-dir} && git checkout ${{ inputs.ref }}
-          cd ${temp-airflow-dir} && ls -lthr
+          git clone https://github.com/apache/airflow.git "${temp-airflow-dir}"
+          cd "${temp-airflow-dir}" && git checkout "${{ inputs.ref }}"
+          cd "${temp-airflow-dir}" && ls -lthr
           
 
 
