@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: "Checkout ${{ inputs.ref }}"
         env:
-          TEMP_AIRFLOW_DIR: "${{ github.workspace }}/temp-airflow-repo-reference"
+          TEMP_AIRFLOW_DIR: "/home/runner/work/temp-airflow-repo-reference"
         run: |
           mkdir -p ${TEMP_AIRFLOW_DIR}
           git clone https://github.com/apache/airflow.git "${TEMP_AIRFLOW_DIR}"
