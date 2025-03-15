@@ -45,7 +45,8 @@ on:  # yamllint disable-line rule:truthy
 #        required: false
 #        default: "false"
 #        type: string
-
+env:
+  GLOBAL_VAR: "This is a global variable"
 permissions:
   contents: read
 jobs:
@@ -63,6 +64,17 @@ jobs:
           git clone https://github.com/apache/airflow.git "${TEMP_AIRFLOW_DIR}"
           cd "${TEMP_AIRFLOW_DIR}" && git checkout "${{ inputs.ref }}"
           cd "${TEMP_AIRFLOW_DIR}" && ls -lthr
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print global variable
+        run: echo "Global Variable: $GLOBAL_VAR"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print global variable
+        run: echo "Global Variable: $GLOBAL_VAR"
           
 
 
