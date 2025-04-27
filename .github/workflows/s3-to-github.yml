@@ -14,6 +14,13 @@ jobs:
           sudo /tmp/aws/install --update
           rm -rf /tmp/aws/
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@010d0da01d0b5a38af31e9c3470dbfdabdecca3a  # v4.0.1
+        with:
+          aws-access-key-id: "fake-key"
+          aws-secret-access-key: "fake-secret"
+          aws-region: us-east-2
+
       - name: Syncing
         run: |
           sudo mkdir -p /mnt/docs-archive && sudo chown -R "${USER}" /mnt/docs-archive
