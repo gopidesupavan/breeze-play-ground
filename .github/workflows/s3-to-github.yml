@@ -16,6 +16,6 @@ jobs:
 
       - name: Syncing
         run: |
-          mkdir -p /mnt/docs-archive
+          sudo mkdir -p /mnt/docs-archive && sudo chown -R "${USER}" /mnt/docs-archive
           aws s3 sync s3://staging-docs-airflow-apache-org/docs/ /mnt/docs-archive
           ls -la /mnt/docs-archive
