@@ -42,6 +42,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.DOCS_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
+      - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
       - name: Syncing
         run: |
           python3 -m pip install uv
