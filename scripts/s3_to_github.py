@@ -138,7 +138,7 @@ if __name__ == "__main__":
     syncer.check_bucket()
     document_folder = args.document_folder
 
-    if document_folder:
+    if document_folder and document_folder != "NO_DOCS":
         if syncer.verify_document_folder(document_folder):
             console.print(f"[blue] Document folder {document_folder} exists in bucket {args.bucket_path}.[/]")
             syncer.sync(syncer.bucket_name, syncer.prefix+document_folder, args.local_path)

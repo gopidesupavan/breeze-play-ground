@@ -44,7 +44,7 @@ jobs:
 
       - name: Syncing
         run: |
-          uv run ./scripts/sync_s3_to_github.py --bucket-path ${{inputs.source-location}} --local-path ${{inputs.local-destination}} --document-folder ${{inputs.document-folder}}
+          uv run ./scripts/s3_to_github.py --bucket-path ${{inputs.source-location}} --local-path ${{inputs.local-destination}} --document-folder ${{inputs.document-folder}}
 
       - name: Commiting changes
         run: |
