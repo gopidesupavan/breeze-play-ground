@@ -45,7 +45,8 @@ jobs:
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          lfs: true
+          fetch-depth: 1
 
       - name: Syncing
         run: |
