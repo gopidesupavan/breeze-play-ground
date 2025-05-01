@@ -79,7 +79,7 @@ class CommonTransferUtils:
     @staticmethod
     def copy(source, destination):
         console.print(f"[blue] Copying {source} to {destination} [/]")
-
+        return
         subprocess.run(
             ["aws", "s3", "cp", source, destination], capture_output=True, text=True, check=True
         )
@@ -88,7 +88,7 @@ class CommonTransferUtils:
     @staticmethod
     def remove(file_to_delete):
         console.print(f"[blue] Deleting {file_to_delete} [/]")
-
+        return
         subprocess.run(
             ["aws", "s3", "rm", file_to_delete], capture_output=True, text=True, check=True
         )
