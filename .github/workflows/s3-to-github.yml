@@ -72,7 +72,7 @@ jobs:
 
       - name: "Checkout ${{ github.ref }} ( ${{ github.sha }} )"
         run: |
-          git clone --depth 1 https://github.com/apache/airflow-site-archive.git /mnt/airflow-site-archive
+          git clone --depth 1 https://github.com/gopidesupavan/breeze-play-ground.git /mnt/airflow-site-archive
 
       - name: "Check space available"
         run: df -h
