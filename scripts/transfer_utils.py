@@ -2,6 +2,7 @@ import subprocess
 import sys
 from functools import cached_property
 from multiprocessing import Pool
+from pathlib import Path
 
 import boto3
 import urllib3
@@ -65,21 +66,35 @@ class CommonTransferUtils:
 
         console.print(f"[blue] Syncing {source} to {destination} [/]")
 
-        subprocess.run(
-            ["aws", "s3", "sync", "--delete", source, destination], capture_output=True, text=True, check=True
-        )
+        if source.startswith("s3://"):
+            subprocess.run(
+                ["aws", "s3", "sync", "--delete", source, destination], capture_output=True, text=True, check=True
+            )
+            console.print(f"[blue] Sync completed for {source} to {destination} [/]")
+            return
+
+        if Path(source).is_dir():
+            subprocess.run(
+                ["aws", "s3", "sync", "--delete", source, destination], capture_output=True, text=True, check=True
+            )
+        else:
+            self.copy(source, destination)
+
         console.print(f"[blue] Sync completed for {source} to {destination} [/]")
 
     @staticmethod
     def run_with_pool(func, args):
 
         with Pool(processes=4) as pool:
-            pool.starmap(func, args)
+            if all(isinstance(arg, tuple) for arg in args):
+                pool.starmap(func, args)
+            else:
+                pool.map(func, args)
 
     @staticmethod
     def copy(source, destination):
         console.print(f"[blue] Copying {source} to {destination} [/]")
-        return
+
         subprocess.run(
             ["aws", "s3", "cp", source, destination], capture_output=True, text=True, check=True
         )
@@ -88,7 +103,7 @@ class CommonTransferUtils:
     @staticmethod
     def remove(file_to_delete):
         console.print(f"[blue] Deleting {file_to_delete} [/]")
-        return
+
         subprocess.run(
             ["aws", "s3", "rm", file_to_delete], capture_output=True, text=True, check=True
         )
