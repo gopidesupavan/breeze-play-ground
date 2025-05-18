@@ -44,6 +44,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.DOCS_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
       - name: "Syncing ${{ github.ref }} ( ${{ github.sha }} )"
         env:
           COMMIT_SHA: ${{ github.sha }}
