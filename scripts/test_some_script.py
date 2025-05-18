@@ -45,7 +45,7 @@ def generate_packages_metadata():
     #     return
 
     package_versions_map = {}
-    s3_docs_path = "s3://staging-docs-airflow-apache-org/docs/"
+    s3_docs_path = "s3://live-docs-airflow-apache-org/docs/"
     resp = wr.s3.list_directories(s3_docs_path)
     print(resp)
 
