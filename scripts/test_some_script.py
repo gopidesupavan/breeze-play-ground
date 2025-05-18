@@ -21,6 +21,7 @@
 #     "rich",
 #     "boto3",
 #     "awswrangler>=3.11.0",
+#     "semver>=3.0.4",
 # ]
 # ///
 
