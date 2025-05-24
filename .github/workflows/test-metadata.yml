@@ -55,6 +55,7 @@ jobs:
       - name: printinput
         run: |
           echo ${{ inputs.skip-write-to-stable-folder }}
+          sleep 60
 
   print-info:
     needs: [build-info]
