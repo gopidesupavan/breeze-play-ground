@@ -85,7 +85,7 @@ jobs:
           echo "Workflow run status: ${{ env.conclusion }}"
           echo "Workflow run URL: ${{ env.url }}"
         env:
-          url: steps.find-workflow-run-status.outputs.url
+          url: ${{ steps.find-workflow-run-status.outputs.url }}
           branch: ${{ matrix.branch }}
           workflow-id: ${{ matrix.workflow-id }}
           conclusion: ${{ steps.find-workflow-run-status.outputs.conclusion }}
